@@ -1,4 +1,5 @@
 class Persona{
+    static contadorObjetosPersona = 5;
     constructor(nombre, apellido){
         this._nombre = nombre; // en este momento es que se crea la propiedad 'nombre' para esta Persona
         this._apellido = apellido;
@@ -24,6 +25,12 @@ class Persona{
         // el método que se ejecuta depende si es una referencia de tipo padre
         // o de tipo hijo
         return this.nombreCompleto();
+    }
+    static saludar(){
+        console.log('Saludos desde méodo static');
+    }
+    static saludar2(persona){
+        console.log(persona.nombre + persona.apellido);
     }
 }
 
@@ -53,3 +60,11 @@ console.log(empleado1.nombre); // se ha heredado el GET nombre
 console.log(empleado1.nombreCompleto());
 console.log(empleado1.toString());
 /**Todas las clases heredadn de la clase Object */
+
+//persona1.saludar(); // Ejemplo de que no se puede llamar el método static saludar() desde un objeto
+Persona.saludar();
+Persona.saludar2(persona1);
+Empleado.saludar();
+Empleado.saludar2(empleado1);
+
+console.log(Persona.contadorObjetosPersona);
